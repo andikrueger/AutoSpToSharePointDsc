@@ -61,7 +61,8 @@ function New-TsFile {
         $FriendlyName = $ResourceName
     }
 
-    $ResourcePath = Join-Path $Path "$ResourceName.psm1"
+    $ResourcePath = Join-Path $Path "$($ResourceName).psm1"
+    $MofPath = Join-Path $Path "$($ResourceName).schema.mof"
 
     Write-Verbose "Attempting to parse $ResourcePath."
     try {
@@ -93,8 +94,8 @@ function New-TsFile {
         $ConstructorMap = New-Object System.Collections.ArrayList
 
         $Template = @"
-export class $ResourceName {
-
+import { DSC_Type } from '../DSC_Type';`r`n        
+export class $ResourceName extends DSC_Type {
 "@
         foreach ($ParameterAst in $ParametersAst) {
             $TypeString = ''
@@ -110,12 +111,28 @@ export class $ResourceName {
             $ParameterTypeAttributeAst = $ParameterAst.Attributes | 
                 Where-Object {$_ -is [System.Management.Automation.Language.TypeConstraintAst]}
                 
-            switch ($ParameterAttributesAst) {
-                {($_.typename -like 'parameter') -and (($_.NamedArguments.ArgumentName) -contains 'Mandatory')} {
-                    Write-Verbose "Parameter - $ParameterName is Mandatory."
-                    #$PropertyString = '[Key'
-                    $IsKey = $true
+            $description = [string]::Empty
+            try {
+                $MofValue = Select-String -Path $MofPath -Pattern " $($ParameterName);"
+                $paramTypeMatch = [regex]::Match($($MofValue.Line), "(?<=\[)(\w*)")
+                if ($paramTypeMatch.Success) {
+                    switch ($paramTypeMatch.Value) {
+                        { @("Key", "Required") -contains $_ } {
+                            $IsKey = $true
+                        }
+                        Default {
+                        }
+                    }
                 }
+                
+                $descriptionMatch = [regex]::Match($($MofValue.Line), '(?<=Description\(").+(?=\")')
+                if ($descriptionMatch.Success) {
+                    $description = $descriptionMatch.Value
+                }
+
+            }
+            catch {
+                Write-Verbose $_
             }
 
             switch ($ParameterAttributesAst) {
@@ -149,10 +166,11 @@ export class $ResourceName {
                 [int[]] = 'number[]'
                 [byte] = 'byte'
                 [byte[]] = 'byte[]'
-                [uint32] = 'number'
-                [uint32[]] = 'number[]'
-                [uint64] = 'number'
-                [uint64[]] = 'number[]'
+                [UInt16] = 'number'
+                [UInt32] = 'number'
+                [UInt32[]] = 'number[]'
+                [UInt64] = 'number'
+                [UInt64[]] = 'number[]'
             }
             if ($IsEnum) {
                 $TypeString = "enum"
@@ -185,25 +203,28 @@ export class $ResourceName {
                 
                 if (-not $goodType) {
                     Write-Warning "Don't know what to do with $($ParameterTypeAttributeAst.TypeName.FullName)"
+                    $TypeString = "{}"
                 }
             }
 
             $arrayString = if ($type.IsArray) { '[]' } else { '' }
 
-            #$Template += $PropertyString + "$ParameterName$arrayString;`r`n"
             $paramName = "$($ParameterName.substring(0, 1).tolower())$($ParameterName.substring(1))"
             if ($paramName -eq "ensure" -and $TypeString -eq "enum") {
                 $TypeString = "DSC_Ensure" 
                 $Template = "import { DSC_Ensure } from '../DSC_Ensure';`r`n$($Template)"
             }
             $accessibility = ""
-            if (-not($IsKey)) {
-                $accessibility = "private "
-            }
-            else {
+            if ($IsKey) {
                 $ConstructorParams.Add("`$$($paramName): $TypeString$arrayString") | Out-Null
                 $ConstructorMap.Add("`t`tthis.$($paramName) = `$$($paramName);") | Out-Null
             }
+            $Template += @"
+
+`t/**
+`t * $($description)
+`t*/`r`n
+"@
             $Template += "`t$accessibility$($paramName): $TypeString$arrayString;`r`n"
         }
 
@@ -212,10 +233,10 @@ export class $ResourceName {
     constructor(
 '@
         $Template += $ConstructorParams -join ", "
-        $Template += @'
+        $Template += @"
 ) {
-
-'@
+`t`tsuper();`r`n
+"@
         $Template += $ConstructorMap -join "`r`n"
         $Template += "`r`n`t}"
         $Template += @'
