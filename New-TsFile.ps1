@@ -93,6 +93,11 @@ function New-TsFile {
         $ConstructorParams = New-Object System.Collections.ArrayList
         $ConstructorMap = New-Object System.Collections.ArrayList
 
+        $AddDscCredential = $false
+        $AddDscCredentialTemplate = "import { DSC_Credential } from '../DSC_Credential';`r`n";
+        $AddDscEnsure = $false
+        $AddDscEnsureTemplate = "import { DSC_Ensure } from '../DSC_Ensure';`r`n"
+
         $Template = @"
 import { DSC_Type } from '../DSC_Type';`r`n        
 export class $ResourceName extends DSC_Type {
@@ -173,7 +178,7 @@ export class $ResourceName extends DSC_Type {
                 [UInt64[]] = 'number[]'
             }
             if ($IsEnum) {
-                $TypeString = "enum"
+                $TypeString = "{}"
             }
             elseif ($table.ContainsKey($type)) {
                 $PropertyString += "] $($table[$type]) "
@@ -182,7 +187,7 @@ export class $ResourceName extends DSC_Type {
             elseif ($type -eq [pscredential]) {
                 $PropertyString += ',EmbeddedInstance("MSFT_Credential")] string '
                 $TypeString = "DSC_Credential"
-                $Template = "import { DSC_Credential } from '../DSC_Credential';`r`n$($Template)"
+                $AddDscCredential = $true
             }
             else {
                 $goodType = $false
@@ -198,7 +203,7 @@ export class $ResourceName extends DSC_Type {
                         $goodType = $true
                         $PropertyString += ",ValueMap{$eValues},Values{$eNames}] $($table[$eType]) "
                     }
-                    $TypeString = "enum"
+                    $TypeString = "{}"
                 }
                 
                 if (-not $goodType) {
@@ -212,7 +217,7 @@ export class $ResourceName extends DSC_Type {
             $paramName = "$($ParameterName.substring(0, 1).tolower())$($ParameterName.substring(1))"
             if ($paramName -eq "ensure" -and $TypeString -eq "enum") {
                 $TypeString = "DSC_Ensure" 
-                $Template = "import { DSC_Ensure } from '../DSC_Ensure';`r`n$($Template)"
+                $AddDscEnsure = $true
             }
             $accessibility = ""
             if ($IsKey) {
@@ -243,6 +248,13 @@ export class $ResourceName extends DSC_Type {
 
 }
 '@
+
+        if ($AddDscCredential) {
+            $Template = "$($AddDscCredentialTemplate)$($Template)"
+        }
+        if ($AddDscEnsure) {
+            $Template = "$($AddDscEnsureTemplate)$($Template)"
+        }
     
         $TargetPath = join-path $OutPath "$ResourceName.ts"
     
@@ -253,10 +265,9 @@ export class $ResourceName extends DSC_Type {
 
         Write-Verbose "Writing $ResourceName.ts to $Path"
 
-        $Template | 
-            Out-File -Encoding ascii -FilePath $TargetPath
+        [System.IO.File]::WriteAllLines($TargetPath, $Template)
     }
     catch {
-        throw $_
+        Write-Verbose $_
     }
 }
