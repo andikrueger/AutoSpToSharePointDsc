@@ -1,4 +1,4 @@
-import { demodata } from './AutoSpToDsc/data/demodata';
+import { demodata } from './AutoSpToDsc/data/AutoSpInstallerXmlDemo';
 import { AutoSpToDsc } from './AutoSpToDsc/AutoSpToDsc';
 import 'babel-polyfill';
 
