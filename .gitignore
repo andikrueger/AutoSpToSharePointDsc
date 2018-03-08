@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-
-# misc
-/dev
-/src/types/MSFT
+/lib
+/dist
+/src/Dsc

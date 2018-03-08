@@ -1,0 +1,898 @@
+import * as Primitive from '../xml-primitives';
+
+// Source files:
+// http://localhost:3000/schema/AutoSPInstallerInput_3.99.60.xsd
+
+
+interface BaseType {
+	_exists: boolean;
+	_namespace: string;
+}
+interface _ConfigurationType extends BaseType {
+	Environment: string;
+	Version: string;
+	AdobePDF: ConfigurationTypeAdobePDFType;
+	EnterpriseServiceApps: ConfigurationTypeEnterpriseServiceAppsType;
+	Farm: ConfigurationTypeFarmType;
+	ForeFront: ConfigurationTypeForeFrontType;
+	Install: ConfigurationTypeInstallType;
+	OfficeWebApps: ConfigurationTypeOfficeWebAppsType;
+	ProjectServer: ConfigurationTypeProjectServerType;
+	ServiceApps: ConfigurationTypeServiceAppsType;
+	WebApplications: ConfigurationTypeWebApplicationsType;
+}
+interface ConfigurationType extends _ConfigurationType { constructor: { new(): ConfigurationType }; }
+
+interface _ConfigurationTypeAdobePDFType extends BaseType {
+	Icon: ConfigurationTypeAdobePDFTypeIconType;
+	iFilter: ConfigurationTypeAdobePDFTypeIFilterType;
+	MIMEType: ConfigurationTypeAdobePDFTypeMIMETypeType;
+}
+interface ConfigurationTypeAdobePDFType extends _ConfigurationTypeAdobePDFType { constructor: { new(): ConfigurationTypeAdobePDFType }; }
+
+interface _ConfigurationTypeAdobePDFTypeIconType extends BaseType {
+	Configure: boolean;
+}
+interface ConfigurationTypeAdobePDFTypeIconType extends _ConfigurationTypeAdobePDFTypeIconType { constructor: { new(): ConfigurationTypeAdobePDFTypeIconType }; }
+
+interface _ConfigurationTypeAdobePDFTypeIFilterType extends BaseType {
+	Install: string;
+}
+interface ConfigurationTypeAdobePDFTypeIFilterType extends _ConfigurationTypeAdobePDFTypeIFilterType { constructor: { new(): ConfigurationTypeAdobePDFTypeIFilterType }; }
+
+interface _ConfigurationTypeAdobePDFTypeMIMETypeType extends BaseType {
+	Configure: boolean;
+}
+interface ConfigurationTypeAdobePDFTypeMIMETypeType extends _ConfigurationTypeAdobePDFTypeMIMETypeType { constructor: { new(): ConfigurationTypeAdobePDFTypeMIMETypeType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsType extends BaseType {
+	AccessService: ConfigurationTypeEnterpriseServiceAppsTypeAccessServiceType;
+	AccessServices: ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesType;
+	ExcelServices: ConfigurationTypeEnterpriseServiceAppsTypeExcelServicesType;
+	PerformancePointService: ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceType;
+	VisioService: ConfigurationTypeEnterpriseServiceAppsTypeVisioServiceType;
+}
+interface ConfigurationTypeEnterpriseServiceAppsType extends _ConfigurationTypeEnterpriseServiceAppsType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesType extends _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseType extends _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseTypeDBAliasType extends _ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeAccessServicesTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeAccessServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeAccessServiceType extends _ConfigurationTypeEnterpriseServiceAppsTypeAccessServiceType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeAccessServiceType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeExcelServicesType extends BaseType {
+	Provision: string;
+	Name: string;
+	UnattendedIDPassword: string;
+	UnattendedIDUser: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeExcelServicesType extends _ConfigurationTypeEnterpriseServiceAppsTypeExcelServicesType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeExcelServicesType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+	UnattendedIDPassword: string;
+	UnattendedIDUser: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceType extends _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseType extends _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypePerformancePointServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeEnterpriseServiceAppsTypeVisioServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+	UnattendedIDPassword: string;
+	UnattendedIDUser: string;
+}
+interface ConfigurationTypeEnterpriseServiceAppsTypeVisioServiceType extends _ConfigurationTypeEnterpriseServiceAppsTypeVisioServiceType { constructor: { new(): ConfigurationTypeEnterpriseServiceAppsTypeVisioServiceType }; }
+
+interface _ConfigurationTypeFarmType extends BaseType {
+	Account: ConfigurationTypeFarmTypeAccountType;
+	CentralAdmin: ConfigurationTypeFarmTypeCentralAdminType;
+	Database: ConfigurationTypeFarmTypeDatabaseType;
+	Logging: ConfigurationTypeFarmTypeLoggingType;
+	ManagedAccounts: ConfigurationTypeFarmTypeManagedAccountsType;
+	ObjectCacheAccounts: ConfigurationTypeFarmTypeObjectCacheAccountsType;
+	Passphrase: string;
+	ServerRoles: ConfigurationTypeFarmTypeServerRolesType;
+	Services: ConfigurationTypeFarmTypeServicesType;
+}
+interface ConfigurationTypeFarmType extends _ConfigurationTypeFarmType { constructor: { new(): ConfigurationTypeFarmType }; }
+
+interface _ConfigurationTypeFarmTypeAccountType extends BaseType {
+	AddToLocalAdminsDuringSetup: boolean;
+	LeaveInLocalAdmins: boolean;
+	Password: string;
+	Username: string;
+}
+interface ConfigurationTypeFarmTypeAccountType extends _ConfigurationTypeFarmTypeAccountType { constructor: { new(): ConfigurationTypeFarmTypeAccountType }; }
+
+interface _ConfigurationTypeFarmTypeCentralAdminType extends BaseType {
+	Provision: string;
+	Database: string;
+	Port: string;
+	UseSSL: boolean;
+}
+interface ConfigurationTypeFarmTypeCentralAdminType extends _ConfigurationTypeFarmTypeCentralAdminType { constructor: { new(): ConfigurationTypeFarmTypeCentralAdminType }; }
+
+interface _ConfigurationTypeFarmTypeDatabaseType extends BaseType {
+	ConfigDB: string;
+	DBAlias: ConfigurationTypeFarmTypeDatabaseTypeDBAliasType;
+	DBPrefix: string;
+	DBServer: string;
+}
+interface ConfigurationTypeFarmTypeDatabaseType extends _ConfigurationTypeFarmTypeDatabaseType { constructor: { new(): ConfigurationTypeFarmTypeDatabaseType }; }
+
+interface _ConfigurationTypeFarmTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeFarmTypeDatabaseTypeDBAliasType extends _ConfigurationTypeFarmTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeFarmTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeFarmTypeLoggingType extends BaseType {
+	IISLogs: ConfigurationTypeFarmTypeLoggingTypeIISLogsType;
+	ULSLogs: ConfigurationTypeFarmTypeLoggingTypeULSLogsType;
+	UsageLogs: ConfigurationTypeFarmTypeLoggingTypeUsageLogsType;
+}
+interface ConfigurationTypeFarmTypeLoggingType extends _ConfigurationTypeFarmTypeLoggingType { constructor: { new(): ConfigurationTypeFarmTypeLoggingType }; }
+
+interface _ConfigurationTypeFarmTypeLoggingTypeIISLogsType extends BaseType {
+	Compress: boolean;
+	Path: string;
+}
+interface ConfigurationTypeFarmTypeLoggingTypeIISLogsType extends _ConfigurationTypeFarmTypeLoggingTypeIISLogsType { constructor: { new(): ConfigurationTypeFarmTypeLoggingTypeIISLogsType }; }
+
+interface _ConfigurationTypeFarmTypeLoggingTypeULSLogsType extends BaseType {
+	Compress: boolean;
+	DaysToKeepLogs: string;
+	LogCutInterval: string;
+	LogDiskSpaceUsageGB: string;
+	LogLocation: string;
+}
+interface ConfigurationTypeFarmTypeLoggingTypeULSLogsType extends _ConfigurationTypeFarmTypeLoggingTypeULSLogsType { constructor: { new(): ConfigurationTypeFarmTypeLoggingTypeULSLogsType }; }
+
+interface _ConfigurationTypeFarmTypeLoggingTypeUsageLogsType extends BaseType {
+	Compress: boolean;
+	UsageLogCutTime: string;
+	UsageLogDir: string;
+	UsageLogMaxSpaceGB: string;
+}
+interface ConfigurationTypeFarmTypeLoggingTypeUsageLogsType extends _ConfigurationTypeFarmTypeLoggingTypeUsageLogsType { constructor: { new(): ConfigurationTypeFarmTypeLoggingTypeUsageLogsType }; }
+
+interface _ConfigurationTypeFarmTypeManagedAccountsType extends BaseType {
+	ManagedAccount: ConfigurationTypeFarmTypeManagedAccountsTypeManagedAccountType[];
+}
+interface ConfigurationTypeFarmTypeManagedAccountsType extends _ConfigurationTypeFarmTypeManagedAccountsType { constructor: { new(): ConfigurationTypeFarmTypeManagedAccountsType }; }
+
+interface _ConfigurationTypeFarmTypeManagedAccountsTypeManagedAccountType extends BaseType {
+	CommonName: string;
+	Password?: string;
+	Username?: string;
+}
+interface ConfigurationTypeFarmTypeManagedAccountsTypeManagedAccountType extends _ConfigurationTypeFarmTypeManagedAccountsTypeManagedAccountType { constructor: { new(): ConfigurationTypeFarmTypeManagedAccountsTypeManagedAccountType }; }
+
+interface _ConfigurationTypeFarmTypeObjectCacheAccountsType extends BaseType {
+	SuperReader: string;
+	SuperUser: string;
+}
+interface ConfigurationTypeFarmTypeObjectCacheAccountsType extends _ConfigurationTypeFarmTypeObjectCacheAccountsType { constructor: { new(): ConfigurationTypeFarmTypeObjectCacheAccountsType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesType extends BaseType {
+	Application: ConfigurationTypeFarmTypeServerRolesTypeApplicationType;
+	ApplicationWithSearch: ConfigurationTypeFarmTypeServerRolesTypeApplicationWithSearchType;
+	Custom: ConfigurationTypeFarmTypeServerRolesTypeCustomType;
+	DistributedCache: ConfigurationTypeFarmTypeServerRolesTypeDistributedCacheType;
+	Search: ConfigurationTypeFarmTypeServerRolesTypeSearchType;
+	SingleServerFarm: ConfigurationTypeFarmTypeServerRolesTypeSingleServerFarmType;
+	WebFrontEnd: ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndType;
+	WebFrontEndWithDistributedCache: ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndWithDistributedCacheType;
+}
+interface ConfigurationTypeFarmTypeServerRolesType extends _ConfigurationTypeFarmTypeServerRolesType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeApplicationType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeApplicationType extends _ConfigurationTypeFarmTypeServerRolesTypeApplicationType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeApplicationType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeApplicationWithSearchType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeApplicationWithSearchType extends _ConfigurationTypeFarmTypeServerRolesTypeApplicationWithSearchType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeApplicationWithSearchType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeCustomType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeCustomType extends _ConfigurationTypeFarmTypeServerRolesTypeCustomType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeCustomType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeDistributedCacheType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeDistributedCacheType extends _ConfigurationTypeFarmTypeServerRolesTypeDistributedCacheType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeDistributedCacheType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeSearchType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeSearchType extends _ConfigurationTypeFarmTypeServerRolesTypeSearchType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeSearchType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeSingleServerFarmType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeSingleServerFarmType extends _ConfigurationTypeFarmTypeServerRolesTypeSingleServerFarmType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeSingleServerFarmType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndType extends _ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndType }; }
+
+interface _ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndWithDistributedCacheType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndWithDistributedCacheType extends _ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndWithDistributedCacheType { constructor: { new(): ConfigurationTypeFarmTypeServerRolesTypeWebFrontEndWithDistributedCacheType }; }
+
+interface _ConfigurationTypeFarmTypeServicesType extends BaseType {
+	ClaimsToWindowsTokenService: ConfigurationTypeFarmTypeServicesTypeClaimsToWindowsTokenServiceType;
+	DistributedCache: ConfigurationTypeFarmTypeServicesTypeDistributedCacheType;
+	FoundationWebApplication: ConfigurationTypeFarmTypeServicesTypeFoundationWebApplicationType;
+	IncomingEmail: ConfigurationTypeFarmTypeServicesTypeIncomingEmailType;
+	OutgoingEmail: ConfigurationTypeFarmTypeServicesTypeOutgoingEmailType;
+	SandboxedCodeService: ConfigurationTypeFarmTypeServicesTypeSandboxedCodeServiceType;
+	SMTP: ConfigurationTypeFarmTypeServicesTypeSMTPType;
+	WorkflowTimer: ConfigurationTypeFarmTypeServicesTypeWorkflowTimerType;
+}
+interface ConfigurationTypeFarmTypeServicesType extends _ConfigurationTypeFarmTypeServicesType { constructor: { new(): ConfigurationTypeFarmTypeServicesType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeClaimsToWindowsTokenServiceType extends BaseType {
+	Start: string;
+	UpdateAccount: boolean;
+}
+interface ConfigurationTypeFarmTypeServicesTypeClaimsToWindowsTokenServiceType extends _ConfigurationTypeFarmTypeServicesTypeClaimsToWindowsTokenServiceType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeClaimsToWindowsTokenServiceType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeDistributedCacheType extends BaseType {
+	Start: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeDistributedCacheType extends _ConfigurationTypeFarmTypeServicesTypeDistributedCacheType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeDistributedCacheType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeFoundationWebApplicationType extends BaseType {
+	Start: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeFoundationWebApplicationType extends _ConfigurationTypeFarmTypeServicesTypeFoundationWebApplicationType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeFoundationWebApplicationType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeIncomingEmailType extends BaseType {
+	Start: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeIncomingEmailType extends _ConfigurationTypeFarmTypeServicesTypeIncomingEmailType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeIncomingEmailType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeOutgoingEmailType extends BaseType {
+	Configure: boolean;
+	EmailAddress: string;
+	ReplyToEmail: string;
+	SMTPServer: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeOutgoingEmailType extends _ConfigurationTypeFarmTypeServicesTypeOutgoingEmailType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeOutgoingEmailType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeSandboxedCodeServiceType extends BaseType {
+	Start: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeSandboxedCodeServiceType extends _ConfigurationTypeFarmTypeServicesTypeSandboxedCodeServiceType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeSandboxedCodeServiceType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeSMTPType extends BaseType {
+	Install: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeSMTPType extends _ConfigurationTypeFarmTypeServicesTypeSMTPType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeSMTPType }; }
+
+interface _ConfigurationTypeFarmTypeServicesTypeWorkflowTimerType extends BaseType {
+	Start: string;
+}
+interface ConfigurationTypeFarmTypeServicesTypeWorkflowTimerType extends _ConfigurationTypeFarmTypeServicesTypeWorkflowTimerType { constructor: { new(): ConfigurationTypeFarmTypeServicesTypeWorkflowTimerType }; }
+
+interface _ConfigurationTypeForeFrontType extends BaseType {
+	Install: string;
+	ConfigFile: string;
+}
+interface ConfigurationTypeForeFrontType extends _ConfigurationTypeForeFrontType { constructor: { new(): ConfigurationTypeForeFrontType }; }
+
+interface _ConfigurationTypeInstallType extends BaseType {
+	SPVersion: string;
+	AutoAdminLogon: ConfigurationTypeInstallTypeAutoAdminLogonType;
+	ConfigFile: string;
+	DataDir: string;
+	Disable: ConfigurationTypeInstallTypeDisableType;
+	InstallDir: string;
+	OfflineInstall: boolean;
+	PauseAfterInstall: boolean;
+	PIDKey: string;
+	RemoteInstall: ConfigurationTypeInstallTypeRemoteInstallType;
+	SKU: string;
+}
+interface ConfigurationTypeInstallType extends _ConfigurationTypeInstallType { constructor: { new(): ConfigurationTypeInstallType }; }
+
+interface _ConfigurationTypeInstallTypeAutoAdminLogonType extends BaseType {
+	Enable: boolean;
+	Password: string;
+}
+interface ConfigurationTypeInstallTypeAutoAdminLogonType extends _ConfigurationTypeInstallTypeAutoAdminLogonType { constructor: { new(): ConfigurationTypeInstallTypeAutoAdminLogonType }; }
+
+interface _ConfigurationTypeInstallTypeDisableType extends BaseType {
+	CertificateRevocationListCheck: boolean;
+	IEEnhancedSecurity: boolean;
+	LoopbackCheck: boolean;
+	UnusedServices: boolean;
+}
+interface ConfigurationTypeInstallTypeDisableType extends _ConfigurationTypeInstallTypeDisableType { constructor: { new(): ConfigurationTypeInstallTypeDisableType }; }
+
+interface _ConfigurationTypeInstallTypeRemoteInstallType extends BaseType {
+	Enable: boolean;
+	ParallelInstall: boolean;
+}
+interface ConfigurationTypeInstallTypeRemoteInstallType extends _ConfigurationTypeInstallTypeRemoteInstallType { constructor: { new(): ConfigurationTypeInstallTypeRemoteInstallType }; }
+
+interface _ConfigurationTypeOfficeWebAppsType extends BaseType {
+	Install: boolean;
+	ConfigFile: string;
+	ExcelService: ConfigurationTypeOfficeWebAppsTypeExcelServiceType;
+	PIDKeyOWA: string;
+	PowerPointService: ConfigurationTypeOfficeWebAppsTypePowerPointServiceType;
+	WordViewingService: ConfigurationTypeOfficeWebAppsTypeWordViewingServiceType;
+}
+interface ConfigurationTypeOfficeWebAppsType extends _ConfigurationTypeOfficeWebAppsType { constructor: { new(): ConfigurationTypeOfficeWebAppsType }; }
+
+interface _ConfigurationTypeOfficeWebAppsTypeExcelServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+	UnattendedIDPassword: string;
+	UnattendedIDUser: string;
+}
+interface ConfigurationTypeOfficeWebAppsTypeExcelServiceType extends _ConfigurationTypeOfficeWebAppsTypeExcelServiceType { constructor: { new(): ConfigurationTypeOfficeWebAppsTypeExcelServiceType }; }
+
+interface _ConfigurationTypeOfficeWebAppsTypePowerPointServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeOfficeWebAppsTypePowerPointServiceType extends _ConfigurationTypeOfficeWebAppsTypePowerPointServiceType { constructor: { new(): ConfigurationTypeOfficeWebAppsTypePowerPointServiceType }; }
+
+interface _ConfigurationTypeOfficeWebAppsTypeWordViewingServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeOfficeWebAppsTypeWordViewingServiceType extends _ConfigurationTypeOfficeWebAppsTypeWordViewingServiceType { constructor: { new(): ConfigurationTypeOfficeWebAppsTypeWordViewingServiceType }; }
+
+interface _ConfigurationTypeProjectServerType extends BaseType {
+	Install: boolean;
+	ConfigFile: string;
+	PIDKeyProjectServer: string;
+	ServiceApp: ConfigurationTypeProjectServerTypeServiceAppType;
+}
+interface ConfigurationTypeProjectServerType extends _ConfigurationTypeProjectServerType { constructor: { new(): ConfigurationTypeProjectServerType }; }
+
+interface _ConfigurationTypeProjectServerTypeServiceAppType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseType;
+	ManagedPath: string;
+	Name: string;
+	ProxyName: string;
+	ServiceAccount: string;
+	ServiceAccountPassword: string;
+}
+interface ConfigurationTypeProjectServerTypeServiceAppType extends _ConfigurationTypeProjectServerTypeServiceAppType { constructor: { new(): ConfigurationTypeProjectServerTypeServiceAppType }; }
+
+interface _ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseType extends _ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseType { constructor: { new(): ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseType }; }
+
+interface _ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseTypeDBAliasType extends _ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeProjectServerTypeServiceAppTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsType extends BaseType {
+	AppManagementService: ConfigurationTypeServiceAppsTypeAppManagementServiceType;
+	BusinessDataConnectivity: ConfigurationTypeServiceAppsTypeBusinessDataConnectivityType;
+	EnterpriseSearchService: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType;
+	MachineTranslationService: ConfigurationTypeServiceAppsTypeMachineTranslationServiceType;
+	ManagedMetadataServiceApp: ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppType;
+	PowerPointConversionService: ConfigurationTypeServiceAppsTypePowerPointConversionServiceType;
+	SecureStoreService: ConfigurationTypeServiceAppsTypeSecureStoreServiceType;
+	SPUsageService: ConfigurationTypeServiceAppsTypeSPUsageServiceType;
+	StateService: ConfigurationTypeServiceAppsTypeStateServiceType;
+	SubscriptionSettingsService: ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceType;
+	UserProfileServiceApp: ConfigurationTypeServiceAppsTypeUserProfileServiceAppType;
+	WebAnalyticsService: ConfigurationTypeServiceAppsTypeWebAnalyticsServiceType;
+	WordAutomationService: ConfigurationTypeServiceAppsTypeWordAutomationServiceType;
+	WorkManagementService: ConfigurationTypeServiceAppsTypeWorkManagementServiceType;
+}
+interface ConfigurationTypeServiceAppsType extends _ConfigurationTypeServiceAppsType { constructor: { new(): ConfigurationTypeServiceAppsType }; }
+
+interface _ConfigurationTypeServiceAppsTypeAppManagementServiceType extends BaseType {
+	Provision: string;
+	AppDomain: string;
+	Database: ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeAppManagementServiceType extends _ConfigurationTypeServiceAppsTypeAppManagementServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeAppManagementServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeAppManagementServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeBusinessDataConnectivityType extends _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityType { constructor: { new(): ConfigurationTypeServiceAppsTypeBusinessDataConnectivityType }; }
+
+interface _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeBusinessDataConnectivityTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType extends BaseType {
+	Provision: string;
+	AcknowledgementTimeout: string;
+	ConnectionTimeout: string;
+	ContactEmail: string;
+	CustomIndexLocation: string;
+	EnterpriseSearchServiceApplications: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsType;
+	IgnoreSSLWarnings: boolean;
+	InternetIdentity: string;
+	PerformanceLevel: string;
+	ProxyType: string;
+	ShareName: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsType extends BaseType {
+	EnterpriseSearchServiceApplication: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationType;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationType extends BaseType {
+	Name: string;
+	AdminComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentType;
+	AnalyticsProcessingComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAnalyticsProcessingComponentType;
+	ApplicationPool: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeApplicationPoolType;
+	ContentAccessAccount: string;
+	ContentAccessAccountPassword: string;
+	ContentProcessingComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeContentProcessingComponentType;
+	CrawlComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeCrawlComponentType;
+	Database: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseType;
+	FailoverDatabaseServer: string;
+	IndexComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeIndexComponentType;
+	Partitioned: boolean;
+	Partitions: string;
+	Proxy: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeProxyType;
+	QueryComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeQueryComponentType;
+	SearchCenterUrl: string;
+	SearchQueryAndSiteSettingsComponent: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeSearchQueryAndSiteSettingsComponentType;
+	SearchServiceApplicationType: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentType extends BaseType {
+	Provision: string;
+	ApplicationPool: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentTypeApplicationPoolType;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentTypeApplicationPoolType extends BaseType {
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentTypeApplicationPoolType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentTypeApplicationPoolType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAdminComponentTypeApplicationPoolType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAnalyticsProcessingComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAnalyticsProcessingComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAnalyticsProcessingComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeAnalyticsProcessingComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeApplicationPoolType extends BaseType {
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeApplicationPoolType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeApplicationPoolType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeApplicationPoolType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeContentProcessingComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeContentProcessingComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeContentProcessingComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeContentProcessingComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeCrawlComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeCrawlComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeCrawlComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeCrawlComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeIndexComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeIndexComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeIndexComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeIndexComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeProxyType extends BaseType {
+	Name: string;
+	Partitioned: boolean;
+	ProxyGroup: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeProxyType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeProxyType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeProxyType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeQueryComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeQueryComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeQueryComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeQueryComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeSearchQueryAndSiteSettingsComponentType extends BaseType {
+	Provision: string;
+}
+interface ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeSearchQueryAndSiteSettingsComponentType extends _ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeSearchQueryAndSiteSettingsComponentType { constructor: { new(): ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceTypeEnterpriseSearchServiceApplicationsTypeEnterpriseSearchServiceApplicationTypeSearchQueryAndSiteSettingsComponentType }; }
+
+interface _ConfigurationTypeServiceAppsTypeMachineTranslationServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeMachineTranslationServiceType extends _ConfigurationTypeServiceAppsTypeMachineTranslationServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeMachineTranslationServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeMachineTranslationServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppType extends _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppType { constructor: { new(): ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppType }; }
+
+interface _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeManagedMetadataServiceAppTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypePowerPointConversionServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypePowerPointConversionServiceType extends _ConfigurationTypeServiceAppsTypePowerPointConversionServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypePowerPointConversionServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSecureStoreServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeSecureStoreServiceType extends _ConfigurationTypeServiceAppsTypeSecureStoreServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeSecureStoreServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeSecureStoreServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSPUsageServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseType;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeSPUsageServiceType extends _ConfigurationTypeServiceAppsTypeSPUsageServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeSPUsageServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeSPUsageServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeStateServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeStateServiceType extends _ConfigurationTypeServiceAppsTypeStateServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeStateServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeStateServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceType extends BaseType {
+	Provision: string;
+	AppSiteSubscriptionName: string;
+	Database: ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseType;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceType extends _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeSubscriptionSettingsServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeUserProfileServiceAppType extends BaseType {
+	Provision: string;
+	CreateDefaultSyncConnection: boolean;
+	Database: ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseType;
+	EnableNetBIOSDomainNames: boolean;
+	MySiteHostLocation: string;
+	MySiteManagedPath: string;
+	Name: string;
+	ProxyName: string;
+	StartProfileSync: boolean;
+	SyncConnectionAccount: string;
+	SyncConnectionAccountPassword: string;
+}
+interface ConfigurationTypeServiceAppsTypeUserProfileServiceAppType extends _ConfigurationTypeServiceAppsTypeUserProfileServiceAppType { constructor: { new(): ConfigurationTypeServiceAppsTypeUserProfileServiceAppType }; }
+
+interface _ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	ProfileDB: string;
+	SocialDB: string;
+	SyncDB: string;
+}
+interface ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeUserProfileServiceAppTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseType;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeWebAnalyticsServiceType extends _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeWebAnalyticsServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	ReportingDB: string;
+	StagingDB: string;
+}
+interface ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeWebAnalyticsServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWordAutomationServiceType extends BaseType {
+	Provision: string;
+	Database: ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseType;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeWordAutomationServiceType extends _ConfigurationTypeServiceAppsTypeWordAutomationServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeWordAutomationServiceType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseType extends _ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseType { constructor: { new(): ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseTypeDBAliasType extends _ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeServiceAppsTypeWordAutomationServiceTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeServiceAppsTypeWorkManagementServiceType extends BaseType {
+	Provision: string;
+	Name: string;
+	ProxyName: string;
+}
+interface ConfigurationTypeServiceAppsTypeWorkManagementServiceType extends _ConfigurationTypeServiceAppsTypeWorkManagementServiceType { constructor: { new(): ConfigurationTypeServiceAppsTypeWorkManagementServiceType }; }
+
+interface _ConfigurationTypeWebApplicationsType extends BaseType {
+	AddURLsToHOSTS: boolean;
+	WebApplication?: ConfigurationTypeWebApplicationsTypeWebApplicationType[];
+}
+interface ConfigurationTypeWebApplicationsType extends _ConfigurationTypeWebApplicationsType { constructor: { new(): ConfigurationTypeWebApplicationsType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationType extends BaseType {
+	Name: string;
+	AddURLToLocalIntranetZone: boolean;
+	ApplicationPool: string;
+	Database: ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseType;
+	GrantCurrentUserFullControl: boolean;
+	ManagedPaths: ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsType;
+	Port: string;
+	SiteCollections: ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsType;
+	Type: string;
+	Url: string;
+	UseBasicAuthentication: boolean;
+	UseClaims: boolean;
+	UseHostHeader: boolean;
+	UseOnlineWebPartCatalog: boolean;
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationType extends _ConfigurationTypeWebApplicationsTypeWebApplicationType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseType extends BaseType {
+	DBAlias: ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseTypeDBAliasType;
+	DBServer: string;
+	Name: string;
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseTypeDBAliasType extends BaseType {
+	Create: boolean;
+	DBInstance: string;
+	DBPort: string;
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseTypeDBAliasType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseTypeDBAliasType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeDatabaseTypeDBAliasType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsType extends BaseType {
+	ManagedPath?: ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsTypeManagedPathType[];
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsTypeManagedPathType extends BaseType {
+	explicit: boolean;
+	relativeUrl: string;
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsTypeManagedPathType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsTypeManagedPathType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeManagedPathsTypeManagedPathType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsType extends BaseType {
+	SiteCollection: ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsTypeSiteCollectionType[];
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsType }; }
+
+interface _ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsTypeSiteCollectionType extends BaseType {
+	siteUrl: string;
+	CustomDatabase: string;
+	Description: string;
+	HostNamedSiteCollection: boolean;
+	LCID: string;
+	Locale: string;
+	Name: string;
+	Owner: string;
+	SearchUrl: string;
+	Template: string;
+	Time24: boolean;
+}
+interface ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsTypeSiteCollectionType extends _ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsTypeSiteCollectionType { constructor: { new(): ConfigurationTypeWebApplicationsTypeWebApplicationTypeSiteCollectionsTypeSiteCollectionType }; }
+
+export interface document extends BaseType {
+	Configuration: ConfigurationType;
+}
+export var document: document;

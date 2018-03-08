@@ -1,2 +1,3 @@
 # DscResource2TypeScript
-Generate TypeScript classes based on a PowerShell DSC Resource
+
+Generate TypeScript classes based on a PowerShell DSC Module

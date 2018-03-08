@@ -1,14 +1,67 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DscResource2TypeScript</title>
-  </head>
-  <body>
+    <title>AutoSpToSharePointDsc</title>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.min.css"
+    />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/css/fabric.components.min.css"
+    />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-sham.min.js"></script>-->
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.2.0/js/fabric.min.js"></script>
+</head>
+
+<body class="ms-Fabric">
     <noscript>
-      You need to enable JavaScript to run this app.
+        You need to enable JavaScript to run this app.
     </noscript>
-    <div id="root"></div>
-  </body>
+    <div id="root">
+        <div class="ms-Grid">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-u-sm12">
+                    <h1>AutoSPInstaller to PowerShell DSC (PREVIEW)</h1>
+                    <p class="ms-font-m">
+                        Convert your AutoSPInstaller XML to a PowerShell DSC Configuration.
+                    </p>
+                    <ul class="ms-font-m">
+                        <li>Paste your AutoSPInstaller XML into the left textbox.</li>
+                        <li>Press 'convert'</li>
+                        <li>Get your PowerShell DSC Configuration on the right.</li>
+                    </ul>
+                    <button class="ms-Button ms-Button--primary" id="convert">
+                        <span class="ms-Button-label">convert</span>
+                    </button>
+                </div>
+            </div>
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6">
+                    <div class="ms-TextField ms-TextField--multiline">
+                        <label class="ms-Label">AutoSPInstaller XML</label>
+                        <textarea id="autospinstaller" class="ms-TextField-field"></textarea>
+                    </div>
+                </div>
+                <div class="ms-Grid-col ms-u-sm6 ms-u-md6 ms-u-lg6">
+                    <div class="ms-TextField ms-TextField--multiline">
+                        <label class="ms-Label">PowerShell DSC - SharePointDSC</label>
+                        <textarea id="sharepointdsc" class="ms-TextField-field"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var TextFieldElements = document.querySelectorAll(".ms-TextField");
+        for (var i = 0; i < TextFieldElements.length; i++) {
+            new fabric['TextField'](TextFieldElements[i]);
+        }
+    </script>
+    <script src="../dist/bundle.js"></script>
+</body>
+
 </html>
