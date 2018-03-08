@@ -4,7 +4,7 @@ export const demodata: string = `
     <ConfigFile>config-AutoSPInstaller.xml</ConfigFile>
     <InstallDir>InstallDir</InstallDir>
     <DataDir>DataDir</DataDir>
-    <PIDKey>NQTMW-K63MQ-39G6H-B2CH9-FRDWJ</PIDKey>
+    <PIDKey></PIDKey>
     <SKU>Enterprise</SKU>
     <OfflineInstall>true</OfflineInstall>
     <PauseAfterInstall>false</PauseAfterInstall>
