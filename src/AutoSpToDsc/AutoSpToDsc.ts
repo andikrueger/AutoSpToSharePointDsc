@@ -281,7 +281,7 @@ export class AutoSpToDsc {
                 this.addInstallStepToFirstServer(dscWebApp);
 
                 if (webApp.ManagedPaths.ManagedPath !== undefined) {
-                    for (let o: any = 0; 0 < webApp.ManagedPaths.ManagedPath.length; o++) {
+                    for (let o: any = 0; o < webApp.ManagedPaths.ManagedPath.length; o++) {
                         let managedP: any = webApp.ManagedPaths.ManagedPath[o];
                         let dscManagedPath: any = new SharePointDsc.MsftSPManagedPath(
                             dscWebApp.url,

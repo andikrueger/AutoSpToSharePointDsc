@@ -41,5 +41,5 @@
         "rebuild": "rimraf dist && npm run build:webpack",
         "build:webpack": "webpack --config ./webpack.config.js --progress --profile --color --display-error-details --display-cached --mode development"
     },
-    "version": "0.0.2"
+    "version": "0.0.3"
 }

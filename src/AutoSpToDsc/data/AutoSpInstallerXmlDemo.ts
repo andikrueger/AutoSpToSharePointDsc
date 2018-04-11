@@ -128,6 +128,7 @@ export const demodata: string = `
         </Database>
         <ManagedPaths>
             <ManagedPath relativeUrl="help" explicit="true"/>
+            <ManagedPath relativeUrl="helper" explicit="true"/>
         </ManagedPaths>
         <SiteCollections>
             <SiteCollection siteUrl="http://portal.contoso.com">
