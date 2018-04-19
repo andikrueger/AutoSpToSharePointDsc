@@ -346,7 +346,7 @@ export class AutoSpToDsc {
             spUsageService.databaseName = usageApp.Database.Name;
             spUsageService.databaseServer = usageApp.Database.DBServer;
             spUsageService.ensure = DscEnsure.Present;
-            this.addInstallStepToFirstServer(spUsageService, usageApp.Provision);
+            this.addInstallStepToFirstServer(spUsageService);
 
             let spUsageServiceProxy: SharePointDsc.MsftSPServiceInstance = new SharePointDsc.MsftSPServiceInstance(usageApp.Name);
             spUsageServiceProxy.ensure = DscEnsure.Present;
@@ -439,8 +439,7 @@ export class AutoSpToDsc {
                 'SharePoint Services');
             dscManagedMetadata.databaseName = mmService.Database.Name;
             dscManagedMetadata.databaseServer = mmService.Database.DBServer;
-            dscManagedMetadata.dependsOn = dscAppPool.DependanceName;
-            this.addInstallStepToFirstServer(dscManagedMetadata);
+            this.addInstallStepToFirstServer(dscManagedMetadata, dscAppPool.DependanceName);
         }
 
         // userprofile service
@@ -456,8 +455,7 @@ export class AutoSpToDsc {
             dscUserProfile.proxyName = uspService.proxyName;
             dscUserProfile.socialDBName = uspService.Database.SocialDB;
             dscUserProfile.socialDBServer = uspService.Database.DBServer;
-            dscUserProfile.dependsOn = dscAppPool.DependanceName;
-            this.addInstallStepToFirstServer(dscUserProfile);
+            this.addInstallStepToFirstServer(dscUserProfile, dscAppPool.DependanceName);
         }
 
         // enterprise search
@@ -473,8 +471,7 @@ export class AutoSpToDsc {
                 searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Database.DBServer;
             dscSearch.proxyName = searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Proxy.Name;
             dscSearch.applicationPool = 'SharePoint Search Application Pool';
-            dscSearch.dependsOn = dscSearchAppPool.DependanceName;
-            this.addInstallStepToFirstServer(dscSearch);
+            this.addInstallStepToFirstServer(dscSearch, dscSearchAppPool.DependanceName);
 
             // let dscSearchIndex: SharePointDsc.MsftSPSearchIndexPartition = new SharePointDsc.MsftSPSearchIndexPartition(
             //     1,
