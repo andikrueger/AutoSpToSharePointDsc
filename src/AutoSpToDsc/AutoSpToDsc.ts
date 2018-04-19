@@ -242,8 +242,35 @@ export class AutoSpToDsc {
          * Managed Accounts
          * SPManagedAccounts
          */
+        let spServicesManagedAccount: string = '';
+        let spPortalManagedAccount: string = '';
+        let spMySiteManagedAccount: string = '';
+        let spSearchManagedAccount: string = '';
+
         for (let j: number = 0; j < this.config.Farm.ManagedAccounts.ManagedAccount.length; j++) {
             let account: any = this.config.Farm.ManagedAccounts.ManagedAccount[j];
+
+            switch (account.CommonName) {
+                case 'spservice': {
+                    spServicesManagedAccount = account.Username;
+                    break;
+                }
+                case 'Portal': {
+                    spPortalManagedAccount = account.Username;
+                    break;
+                }
+                case 'MySiteHost': {
+                    spMySiteManagedAccount = account.Username;
+                    break;
+                }
+                case 'spSearchManagedAccount': {
+                    spServicesManagedAccount = account.Username;
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
 
             let spManagedAccount: SharePointDsc.MsftSPManagedAccount = new SharePointDsc.MsftSPManagedAccount(account.CommonName as string);
             spManagedAccount.account = new DscCredential(account.Username as string, account.Password as string);
@@ -259,7 +286,6 @@ export class AutoSpToDsc {
         if (webApps !== undefined) {
             for (let k: any = 0; k < webApps.length; k++) {
 
-
                 let webApp: AutoSpXml.ConfigurationTypeWebApplicationsTypeWebApplicationType = webApps[k];
                 if (webApp.Database.DBAlias.Create === true &&
                     this.sqlAliasNames.indexOf(webApp.Database.Name) !== 0) {
@@ -270,11 +296,10 @@ export class AutoSpToDsc {
                     this.addInstallStepByProvisionTo(sqlFarmAlias, 'true');
                 }
 
-
                 let dscWebApp: SharePointDsc.MsftSPWebApplication = new SharePointDsc.MsftSPWebApplication(
                     webApp.Name,
                     webApp.ApplicationPool,
-                    '',
+                    spPortalManagedAccount,
                     webApp.Url);
                 dscWebApp.databaseName = webApp.Database.Name;
                 dscWebApp.databaseServer = webApp.Database.DBServer;
@@ -295,11 +320,13 @@ export class AutoSpToDsc {
                 if (webApp.SiteCollections.SiteCollection !== undefined) {
                     for (let l: number = 0; l < webApp.SiteCollections.SiteCollection.length; l++) {
                         let siteColletion: any = webApp.SiteCollections.SiteCollection[l];
-                        let dscSite: any = new SharePointDsc.MsftSPSite(siteColletion.siteUrl, siteColletion.Owner);
+                        let dscSite: SharePointDsc.MsftSPSite = new SharePointDsc.MsftSPSite(siteColletion.siteUrl, siteColletion.Owner);
                         dscSite.language = parseInt(siteColletion.LCID, undefined);
                         dscSite.template = siteColletion.Template;
                         dscSite.description = siteColletion.Description;
-                        dscSite.contentDatabase = siteColletion.CustomDatabase;
+                        if (dscSite.contentDatabase !== '') {
+                            dscSite.contentDatabase = siteColletion.CustomDatabase;
+                        }
                         this.addInstallStepToFirstServer(dscSite, dscWebApp.DependanceName);
                     }
                 }
@@ -375,6 +402,7 @@ export class AutoSpToDsc {
             this.addInstallStepToServer(distCacheServiceInstance, distCache.Start);
         }
 
+        // wf Timer
         let wfTimer: any = this.config.Farm.Services.WorkflowTimer;
         if (wfTimer.Start !== '') {
             let wfTimerService: any = new SharePointDsc.MsftSPServiceInstance(
@@ -382,6 +410,82 @@ export class AutoSpToDsc {
             wfTimerService.ensure = DscEnsure.Present;
             this.addInstallStepToServer(wfTimerService, wfTimer.Start);
         }
+
+        let dscAppPool: SharePointDsc.MsftSPServiceAppPool = null;
+        let dscSearchAppPool: SharePointDsc.MsftSPServiceAppPool = null;
+        // sharePoint Services Application Pool
+        for (let j: number = 0; j < this.config.Farm.ManagedAccounts.ManagedAccount.length; j++) {
+            if (this.config.Farm.ManagedAccounts.ManagedAccount[j].CommonName === 'spservice') {
+                dscAppPool = new SharePointDsc.MsftSPServiceAppPool(
+                    'SharePoint Services',
+                    spServicesManagedAccount
+                );
+                this.addInstallStepToFirstServer(dscAppPool);
+            }
+            if (this.config.Farm.ManagedAccounts.ManagedAccount[j].CommonName === 'SearchService') {
+                dscSearchAppPool = new SharePointDsc.MsftSPServiceAppPool(
+                    'SharePoint Search Application Pool',
+                    spSearchManagedAccount
+                );
+                this.addInstallStepToFirstServer(dscSearchAppPool);
+            }
+        }
+
+        // managed Metadata App
+        let mmService: any = this.config.ServiceApps.ManagedMetadataServiceApp;
+        if (mmService.Provision !== '') {
+            let dscManagedMetadata: SharePointDsc.MsftSPManagedMetadataServiceApp = new SharePointDsc.MsftSPManagedMetadataServiceApp(
+                mmService.Name,
+                'SharePoint Services');
+            dscManagedMetadata.databaseName = mmService.Database.Name;
+            dscManagedMetadata.databaseServer = mmService.Database.DBServer;
+            dscManagedMetadata.dependsOn = dscAppPool.DependanceName;
+            this.addInstallStepToFirstServer(dscManagedMetadata);
+        }
+
+        // userprofile service
+        let uspService: any = this.config.ServiceApps.UserProfileServiceApp;
+        if (uspService.Provision !== '') {
+            let dscUserProfile: SharePointDsc.MsftSPUserProfileServiceApp = new SharePointDsc.MsftSPUserProfileServiceApp(
+                uspService.Name,
+                'SharePoint Services');
+            dscUserProfile.enableNetBIOS = uspService.enableNetBIOS;
+            dscUserProfile.mySiteHostLocation = uspService.mySiteHostLocation;
+            dscUserProfile.profileDBName = uspService.Database.ProfileDB;
+            dscUserProfile.profileDBServer = uspService.Database.DBServer;
+            dscUserProfile.proxyName = uspService.proxyName;
+            dscUserProfile.socialDBName = uspService.Database.SocialDB;
+            dscUserProfile.socialDBServer = uspService.Database.DBServer;
+            dscUserProfile.dependsOn = dscAppPool.DependanceName;
+            this.addInstallStepToFirstServer(dscUserProfile);
+        }
+
+        // enterprise search
+        let searchService: AutoSpXml.ConfigurationTypeServiceAppsTypeEnterpriseSearchServiceType =
+            this.config.ServiceApps.EnterpriseSearchService;
+        if (searchService.Provision !== '') {
+            let dscSearch: SharePointDsc.MsftSPSearchServiceApp = new SharePointDsc.MsftSPSearchServiceApp(
+                searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Name,
+                'SharePoint Search Services'
+            );
+            dscSearch.databaseName = searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Database.Name;
+            dscSearch.databaseServer =
+                searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Database.DBServer;
+            dscSearch.proxyName = searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Proxy.Name;
+            dscSearch.applicationPool = 'SharePoint Search Application Pool';
+            dscSearch.dependsOn = dscSearchAppPool.DependanceName;
+            this.addInstallStepToFirstServer(dscSearch);
+
+            // let dscSearchIndex: SharePointDsc.MsftSPSearchIndexPartition = new SharePointDsc.MsftSPSearchIndexPartition(
+            //     1,
+            //     searchService.EnterpriseSearchServiceApplications.EnterpriseSearchServiceApplication.Name
+            // );
+            // dscSearchIndex.rootDirectory = searchService.ShareName;
+            // dscSearchIndex.servers =
+            // dscSearchIndex.dependsOn = dscSearch.DependanceName;
+            // this.addInstallStepToFirstServer(dscSearchIndex);
+        }
+
     }
 
     public toString = (): string => {
